@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Đắc Trí Nhân - Senior Sale Support - Marketing Support Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#FBFBFD',       
+                            card: '#FFFFFF',     
+                            main: '#1D1D1F',     
+                            sub: '#86868B',      
+                            blue: '#0071E3',     
+                            blueHover: '#0077ED',
+                            border: '#E8E8ED'    
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+    /* Hiệu ứng lật Ảnh đại diện 3D */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        
+        .avatar-flipper {
+            transform-style: preserve-3d;
+            /* Tổng chu kỳ 16 giây (10s tĩnh - 3s gif - và thời gian chuyển cảnh) */
+            animation: flipLoop 16s ease-in-out infinite; 
+        }
+
+        .avatar-front, .avatar-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .avatar-back {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes flipLoop {
+            /* 3s đầu: Giữ ảnh tĩnh (mặt trước) */
+            0%, 18.75% { transform: rotateY(0deg); }      
+
+            /* 3s tiếp theo: Lật sang ảnh GIF (mặt sau) */
+            21.8%, 37.5% { transform: rotateY(180deg); }   
+
+            /* Chu kỳ lặp lại tiếp theo: 10s ảnh chính - 3s ảnh GIF */
+            40.6%, 81.25% { transform: rotateY(0deg); }   /* Giữ ảnh chính 10s */
+            84.3%, 96.8% { transform: rotateY(180deg); }  /* Giữ ảnh GIF 3s */
+            100% { transform: rotateY(360deg); }          /* Vòng lặp kết thúc, quay về gốc */
+        }
+
+        /* Custom CSS cho thanh trượt Video */
+        .video-scroll-container {
+            scroll-behavior: smooth;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        #videoSlider:hover .video-item:not(:hover) {
+            transform: scale(0.90);
+            opacity: 0.7;
+            filter: grayscale(10%);
+        }
+        #videoSlider .video-item:hover {
+            transform: scale(1.04);
+            z-index: 10;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-sans text-apple-main bg-apple-bg antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-apple-bg/80 backdrop-blur-md border-b border-apple-border transition-all">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="font-bold text-lg tracking-tight text-apple-main">Trí Nhân.</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-apple-sub">
+                <a href="#home" class="hover:text-apple-main transition">Tổng quan</a>
+                <a href="#experience" class="hover:text-apple-main transition">Kinh nghiệm</a>
+                <a href="#projects" class="hover:text-apple-main transition">Highlights</a>
+                <a href="#samples" class="hover:text-apple-main transition">Sản phẩm</a>
+                <a href="#contact" class="hover:text-apple-main transition">Liên hệ</a>
+            </div>
+            <button class="md:hidden text-apple-main">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+
+        <!-- SECTION 1: HERO -->
+        <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 py-20 max-w-4xl mx-auto">
+            
+            <!-- Khung Ảnh Đại Diện (Hiệu ứng Flip 3D GIF) -->
+            <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mb-8 flex-shrink-0 perspective-1000 relative z-10 mx-auto">
+                <div class="w-full h-full avatar-flipper relative">
+                    
+                    <!-- MẶT TRƯỚC: Ảnh Tĩnh -->
+                    <div class="avatar-front absolute inset-0 w-full h-full rounded-full overflow-hidden border-8 border-white shadow-2xl ring-1 ring-apple-border/50 bg-apple-border">
+                        <img src="avatar.jpg" alt="Chân dung tĩnh" class="w-full h-full object-cover scale-150 object-top">
+                    </div>
+                    
+                        <!-- MẶT SAU: Ảnh GIF -->
+                    <div class="avatar-back absolute inset-0 w-full h-full rounded-full overflow-hidden border-8 border-white shadow-2xl ring-1 ring-apple-border/50 bg-apple-border flex items-center justify-center">
+                        <!-- Đã đổi scale-150 thành scale-100 (hoặc p-4 để có khoảng hở viền trắng sang trọng) -->
+                        <img src="avatar.gif" alt="Chân dung GIF" class="w-full h-full object-cover scale-100 object-top">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="inline-block px-6 py-3 mb-6 text-lg md:text-xl font-bold text-apple-main bg-apple-border/50 rounded-full">
+                Sẵn sàng đón nhận cơ hội mới
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-apple-main">
+                Trần Đắc Trí Nhân
+            </h1>
+            <h2 class="text-xl md:text-3xl text-apple-sub font-medium mb-8">
+                Sale Support & Marketing Support
+            </h2>
+            <p class="text-base md:text-xl text-apple-main/80 leading-relaxed max-w-3xl mb-10">
+                Cử nhân Quản trị Kinh doanh với hơn 2 năm kinh nghiệm thực chiến trong vận hành, phân tích dữ liệu kinh doanh, điều phối liên phòng ban và hỗ trợ Marketing doanh nghiệp. Đóng vai trò là "cánh tay đắc lực" giúp tối ưu hóa quy trình, thúc đẩy mục tiêu doanh thu.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#experience" class="bg-apple-blue text-white px-8 py-3 rounded-full font-medium hover:bg-apple-blueHover transition-colors shadow-sm">
+                    Khám phá Kinh nghiệm
+                </a>
+                <a href="#contact" class="bg-apple-border/40 text-apple-main px-8 py-3 rounded-full font-medium hover:bg-apple-border transition-colors">
+                    Liên hệ ngay
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 2: EXPERIENCE -->
+        <section id="experience" class="py-24 px-6 bg-apple-card border-y border-apple-border">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-apple-main mb-4">Hành trình Sự nghiệp</h2>
+                    <p class="text-apple-sub text-lg">Lộ trình thăng tiến và những dấu ấn thực chiến.</p>
+                </div>
+
+                <div class="relative border-l-2 border-apple-border ml-3 md:ml-6 space-y-16 pb-8">
+                    
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute w-4 h-4 bg-apple-blue rounded-full -left-[9px] top-1.5 shadow-[0_0_0_4px_#fff]"></div>
+                        <h3 class="text-2xl font-bold text-apple-main">Công Ty Cổ Phần Cashion</h3>
+                        <p class="text-apple-sub text-sm mb-6 font-medium">06/2025 - 07/2026</p>
+                        
+                        <!-- Role 1.1 & Hình Ảnh Dọc -->
+                        <div class="mb-8 flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
+                            <div class="flex-1 bg-apple-bg rounded-2xl p-6 border border-apple-border">
+                                <h4 class="text-lg font-bold text-apple-main mb-1">Sales Support Executive</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2 text-apple-main/80 leading-relaxed">
+                                    <li>Điều phối hoạt động vận hành và quản lý hàng hóa.</li>
+                                    <li>Phối hợp với Sales, Marketing và Vận hành trong các chiến dịch kinh doanh.</li>
+                                    <li>Tổng hợp doanh số, lập báo cáo và hỗ trợ ra quyết định.</li>
+                                    <li>Nghiên cứu thị trường, xây dựng chiến lược giá và theo dõi tiến độ đơn hàng.</li>
+                                </ul>
+                            </div>
+                            <div class="w-full md:w-2/5 shrink-0 rounded-2xl overflow-hidden border-2 border-dashed border-apple-border h-[420px] bg-apple-bg/50 flex flex-col items-center justify-center p-6 text-center relative group hover:bg-apple-border/50 transition">
+                                <svg class="w-10 h-10 text-apple-sub mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-apple-main font-medium text-sm">Khung ảnh dọc</span>
+                                <span class="text-apple-sub text-xs mt-1">Chèn link ảnh của bạn vào mã nguồn tại đây</span>
+                                <img src="CHT.jpg" class="absolute inset-0 w-full h-full object-cover bg-apple-bg transition-transform duration-700 ease-out group-hover:scale-105" alt="Trợ lý cửa hàng trưởng">
+                            </div>
+                        </div>
+
+                        <!-- Role 1.2 & Hình Ảnh Ngang -->
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            <div class="bg-apple-bg rounded-2xl p-6 border border-apple-border">
+                                <h4 class="text-lg font-bold text-apple-main mb-1">Marketing Support</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2 text-apple-main/80 leading-relaxed">
+                                    <li>Lập kế hoạch và sản xuất nội dung trên Facebook, TikTok.</li>
+                                    <li>Thiết kế template bán hàng cùng content hằng ngày phục vụ đội ngũ Sales.</li>
+                                    <li>Xây dựng kịch bản và trực tiếp tham gia livestream bán hàng.</li>
+                                    <li>Phối hợp triển khai các chương trình truyền thông và bán hàng.</li>
+                                    <li>Thực hiện voice-over cho các truyền thông theo chiến dịch.</li>
+                                </ul>
+                            </div>
+                            <div class="w-full rounded-2xl overflow-hidden border-2 border-dashed border-apple-border h-48 md:h-72 bg-apple-bg/50 flex flex-col items-center justify-center p-6 text-center relative group hover:bg-apple-border/50 transition">
+                                <svg class="w-10 h-10 text-apple-sub mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-apple-main font-medium text-sm">Khung ảnh ngang</span>
+                                <span class="text-apple-sub text-xs mt-1">Chèn link ảnh của bạn vào mã nguồn tại đây</span>
+                                <img src="TDB.jpg" class="absolute inset-0 w-full h-full object-cover bg-apple-bg transition-transform duration-700 ease-out group-hover:scale-105" alt="Đội ngũ Sale Support Cashion">
+                            </div>
+                        </div>
+                    </div>
+                                <!-- Công Ty Cổ Phần Người Bạn -->
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute w-4 h-4 bg-apple-blue rounded-full -left-[9px] top-1.5 shadow-[0_0_0_4px_#fff]"></div>
+                        <h3 class="text-2xl font-bold text-apple-main">Công Ty Cổ Phần Người Bạn</h3>
+                        <p class="text-apple-sub text-sm mb-6 font-medium">06/2024 - 05/2025</p>
+                        
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch mb-8">
+                            <!-- Vùng ảnh vuông bên trái -->
+                            <div class="w-full md:w-1/3 shrink-0 aspect-square rounded-2xl overflow-hidden border-2 border-dashed border-apple-border bg-apple-bg/50 flex flex-col items-center justify-center p-6 text-center relative group hover:bg-apple-border/50 transition">
+                                <svg class="w-10 h-10 text-apple-sub mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-apple-main font-medium text-sm">Ảnh cá nhân</span>
+                                <span class="text-apple-sub text-xs mt-1">Chèn link ảnh của bạn vào đây</span>
+                                <!-- Đừng quên thay "hinh-anh-cua-ban.jpg" bằng tên file ảnh thực tế -->
+                                <img src="nbv.jpg" class="absolute inset-0 w-full h-full object-cover bg-apple-bg transition-transform duration-700 ease-out hover:scale-105" alt="Giao dịch viên tài chính">
+                            </div>
+                            
+                            <!-- Vùng Nội dung bên phải -->
+                            <div class="flex-1 bg-apple-bg rounded-2xl p-6 border border-apple-border">
+                                <h4 class="text-lg font-bold text-apple-main mb-3">Giao dịch viên tài chính</h4>
+                                <ul class="list-disc list-outside ml-5 space-y-2 text-apple-main/80 leading-relaxed">
+                                    <li>Tư vấn và thực hiện các giao dịch tài sản cho khách hàng.</li>
+                                    <li>Thẩm định tài sản, định giá và hoàn thiện hồ sơ giao dịch theo quy trình vận hành.</li>
+                                    <li>Quản lý hàng hóa, tài sản, tiền bạc và các công cụ của công ty.</li>
+                                    <li>Theo dõi dữ liệu khách hàng, hỗ trợ chăm sóc và duy trì tỷ lệ tái sử dụng dịch vụ.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute w-4 h-4 bg-apple-border rounded-full -left-[9px] top-1.5 shadow-[0_0_0_4px_#fff]"></div>
+                        <h3 class="text-2xl font-bold text-apple-main">Ngân hàng Sacombank</h3>
+                        <h4 class="text-lg font-medium text-apple-main mt-1">Thực tập sinh - Giao dịch viên</h4>
+                        <p class="text-apple-sub text-sm mb-4 font-medium">01/2024 - 04/2024</p>
+                        
+                        <div class="bg-apple-bg rounded-2xl p-6 border border-apple-border">
+                            <ul class="list-disc list-outside ml-5 space-y-2 text-apple-main/80 leading-relaxed">
+                                <li>Hỗ trợ công tác hành chính văn phòng hằng ngày, nhập liệu và tổng hợp báo cáo dữ liệu khách hàng.</li>
+                                <li>Tìm kiếm khách hàng và đạt KPI thực tập loại Tốt.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROJECTS & HIGHLIGHTS -->
+        <section id="projects" class="py-24 px-6 bg-apple-bg">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-apple-main mb-4">Highlights</h2>
+                    <p class="text-apple-sub text-lg">Những cột mốc và năng lực nổi bật trong hành trình phát triển nghề nghiệp.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: Tăng trưởng doanh thu -->
+                    <div class="bg-apple-card border border-apple-border rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group flex flex-col">
+                        <div class="w-12 h-12 bg-apple-blue/10 text-apple-blue rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-apple-main mb-3 group-hover:text-apple-blue transition-colors">Tăng trưởng Doanh thu</h3>
+                        <p class="text-apple-main/80 text-sm leading-relaxed mb-4">
+                            Duy trì hiệu quả kinh doanh nhiều tháng liên tiếp, góp phần hoàn thành các mục tiêu doanh thu và mở rộng quy mô KPI tăng trưởng lên 170%.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Miss Earth 2023 -->
+                    <div class="bg-apple-card border border-apple-border rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group flex flex-col">
+                        <div class="w-12 h-12 bg-purple-500/10 text-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-apple-main mb-3 group-hover:text-purple-600 transition-colors">Miss Earth 2023</h3>
+                        <p class="text-apple-main/80 text-sm leading-relaxed mb-6">
+                            Tình nguyện viên Điều phối Hậu cần & Sự kiện. Điều phối sân khấu, đón tiếp VIP và quản lý lịch trình hơn 90 thí sinh.
+                        </p>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden relative bg-apple-bg mt-auto">
+                            <img src="missearth.webp" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Miss Earth 2023">
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Hệ sinh thái công cụ (9 Khung lưới chuẩn) -->
+                    <div class="bg-apple-card border border-apple-border rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group lg:col-span-1 md:col-span-2">
+                        <div class="w-12 h-12 bg-green-500/10 text-green-600 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-apple-main mb-6 group-hover:text-green-600 transition-colors">Hệ sinh thái công cụ</h3>
+                        
+                        <!-- Lưới 9 ô vuông -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <!-- Icon 1: CRM -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">CRM</span>
+                                <img src="CRM.png" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="CRM Icon">
+                            </div>
+                            <!-- Icon 2: Power BI -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">Power BI</span>
+                                <img src="Power.webp" class="absolute inset-0 w-full h-full object-contain p-3 bg-apple-bg rounded-2xl" alt="Power BI Icon">
+                            </div>
+                            <!-- Icon 3: KiotViet -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">KiotViet</span>
+                                <img src="kiot2.jpg" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="KiotViet Icon">
+                            </div>
+                            <!-- Icon 4: Office -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">Office</span>
+                                <img src="MCS.webp" class="absolute inset-0 w-full h-full object-contain p-3 bg-apple-bg rounded-2xl" alt="Microsoft Office Icon">
+                            </div>
+                            <!-- Icon 5: CapCut -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">CapCut</span>
+                                <img src="Capcut.webp" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="Capcut Icon">
+                            </div>
+                            <!-- Icon 6: Canva -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">Canva</span>
+                                <img src="Canva.png" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="Canva Icon">
+                            </div>
+                            <!-- Icon 7: ChatGPT -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">ChatGPT</span>
+                                <img src="Chatgpt.webp" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="Chatgpt Icon">
+                            </div>
+                            <!-- Icon 8: Gemini -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">Gemini</span>
+                                <img src="Gemini.webp" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="Gemini Icon">
+                            </div>
+                            <!-- Icon 9: Base.vn -->
+                            <div class="aspect-square rounded-2xl border-2 border-dashed border-apple-border bg-apple-bg flex flex-col items-center justify-center p-2 text-center relative group hover:bg-apple-border/50 transition">
+                                <span class="text-[10px] text-apple-sub absolute bottom-1 z-10">Base.vn</span>
+                                <img src="base.png" class="absolute inset-0 w-full h-full object-contain p-2 bg-apple-bg rounded-2xl" alt="Base Icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: WORK SAMPLES -->
+        <section id="samples" class="py-24 px-6 bg-apple-card border-t border-apple-border">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-apple-main mb-4">Sản phẩm thực tế</h2>
+                    <p class="text-apple-sub text-lg">Minh chứng năng lực thông qua các thiết kế và dự án đã triển khai.</p>
+                </div>
+
+                <div class="space-y-12">
+                    
+                    <!-- Template Design -->
+                    <div class="bg-apple-bg p-8 md:p-10 rounded-[2rem] border border-apple-border shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <h3 class="text-3xl font-bold text-apple-main mb-8 group-hover:text-apple-blue transition-colors">
+                            Template Design
+                        </h3>
+                        <div class="space-y-12">
+                            <!-- Hàng 1 -->
+                            <div class="grid lg:grid-cols-[2.0fr_1fr] gap-8 items-center">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <img src="template.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                    <img src="template2.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                </div>
+                                <div>              
+                                    <p class="text-apple-main/80 leading-relaxed text-base"> Thiết kế template truyền thông hằng ngày phục vụ đội ngũ Sales, sử dụng phong cách tối giản kết hợp hiệu ứng ombre nhằm làm nổi bật sản phẩm trang sức. Bố cục linh hoạt, dễ cập nhật nội dung và phù hợp với nhiều chiến dịch bán hàng khác nhau.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Hàng 2 -->
+                            <div class="grid lg:grid-cols-[2.0fr_1fr] gap-8 items-center">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <img src="summer1.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                    <img src="summer.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                </div>
+                                <div>       
+                                    <p class="text-apple-main/80 leading-relaxed text-base"> Xây dựng hệ thống hình ảnh cho BST Summer với các yếu tố thị giác lấy cảm hứng từ mùa hè, giúp đồng bộ nhận diện chiến dịch trên nhiều điểm chạm truyền thông. Thiết kế có khả năng linh hoạt ứng dụng cho bài đăng sản phẩm, livestream và các chương trình quảng bá theo mùa.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Hàng 3 -->
+                            <div class="grid lg:grid-cols-[2.0fr_1fr] gap-8 items-center">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <img src="pick.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                    <img src="pick1.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105">
+                                </div>
+                                <div>              
+                                    <p class="text-apple-main/80 leading-relaxed text-base"> Thiết kế lại thông điệp và hình ảnh, thay áo mới cho các sản phẩm cũ nhằm tiếp cận nhiều nhóm khách hàng khác nhau. Nội dung tập trung khai thác nhu cầu theo dịp, tăng sức hấp dẫn của sản phẩm và hỗ trợ truyền tải sản phẩm một cách trực quan.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Hàng 4 (Sản phẩm bổ sung) -->
+                            <div class="grid lg:grid-cols-[2.0fr_1fr] gap-8 items-center">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <!-- Nhớ thay "new_image1.png" bằng tên file ảnh của bạn -->
+                                    <img src="new_image1.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105" alt="Sản phẩm mới 1">
+                                    <!-- Nhớ thay "new_image2.png" bằng tên file ảnh của bạn -->
+                                    <img src="new_image2.png" class="aspect-square object-cover rounded-2xl border border-apple-border transition-transform duration-700 ease-out hover:scale-105" alt="Sản phẩm mới 2">
+                                </div>
+                                <div>              
+                                    <p class="text-apple-main/80 leading-relaxed text-base">  
+    Thiết kế bộ hình ảnh bán hàng cho chương trình khuyến mại. Tăng khả năng hiển thị và kích thích nhu cầu mua sắm của khách hàng đối với nhóm sản phẩm tồn kho. Góp phần thúc đẩy <strong class="font-bold text-red-600">5% doanh số</strong> phát sinh từ các sản phẩm tồn cho doanh nghiệp.
+</p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Livestream (Căn chỉnh Flex 65% ảnh / 35% chữ để không bị tràn khung) -->
+                    <div class="flex flex-col md:flex-row-reverse gap-8 items-center bg-apple-bg p-6 md:p-10 rounded-[2rem] border border-apple-border shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <!-- Vùng Ảnh -->
+                        <div class="w-full md:w-[65%] grid grid-cols-3 gap-4">
+                            <!-- Ảnh dọc 1 -->
+                            <div class="aspect-[9/16] rounded-2xl border-2 border-dashed border-apple-border bg-apple-card flex flex-col items-center justify-center p-4 text-center relative group hover:bg-apple-border/30 transition">
+                                <svg class="w-8 h-8 text-apple-sub mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-xs font-medium text-apple-sub">Ảnh dọc 1</span>
+                                <img src="Poster.jpg" class="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-700 ease-out hover:scale-105" alt="Template trang sức Cashion 1">
+                            </div>
+                            <!-- Ảnh dọc 2 -->
+                            <div class="aspect-[9/16] rounded-2xl border-2 border-dashed border-apple-border bg-apple-card flex flex-col items-center justify-center p-4 text-center relative group hover:bg-apple-border/30 transition">
+                                <svg class="w-8 h-8 text-apple-sub mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-xs font-medium text-apple-sub">Ảnh dọc 2</span>
+                                <img src="Live.jpg" class="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-700 ease-out hover:scale-105" alt="Template trang sức Cashion 2">
+                            </div>
+                            <!-- Ảnh dọc 3 -->
+                            <div class="aspect-[9/16] rounded-2xl border-2 border-dashed border-apple-border bg-apple-card flex flex-col items-center justify-center p-4 text-center relative group hover:bg-apple-border/30 transition">
+                                <svg class="w-8 h-8 text-apple-sub mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-xs font-medium text-apple-sub">Ảnh dọc 3</span>
+                                <img src="Live2.jpg" class="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-700 ease-out hover:scale-105" alt="Livestream 3">
+                            </div>
+                        </div>
+                        
+                        <!-- Vùng Nội dung -->
+                        <div class="w-full md:w-[35%]">
+                            <h3 class="text-3xl font-bold text-apple-main mb-4 group-hover:text-pink-500 transition-colors">Livestream</h3>
+                            <p class="text-apple-main/80 leading-relaxed mb-3"><strong>Poster Livestream:</strong> Thiết kế hình ảnh truyền thông trước phiên phát sóng.</p>
+                            <p class="text-apple-main/80 leading-relaxed mb-3"><strong>Standard Livestream:</strong> Giới thiệu sản phẩm, ưu đãi và tương tác khách hàng.</p>
+                            <p class="text-apple-main/80 leading-relaxed"><strong>Creative Livestream:</strong> Xây dựng kịch bản live - content bán hàng nhằm tăng mức độ ghi nhớ và tương tác.</p>
+                        </div>
+                    </div>
+                    
+                   <!-- Khung Video Clips & Content -->
+                    <div class="w-full bg-apple-bg border border-apple-border rounded-[2rem] p-6 md:p-10 transition-all duration-300 group flex flex-col relative shadow-sm hover:shadow-md">
+                        
+                        <div class="mb-8 px-2">
+                            <h3 class="text-3xl font-bold text-apple-main mb-2 group-hover:text-purple-600 transition-colors">Video Clips & Content</h3>
+                          <p class="text-apple-main/80 text-base leading-relaxed">Tham gia lên ý tưởng, xây dựng kịch bản và sản xuất các video ngắn nhằm truyền tải thông điệp thương hiệu, quảng bá sản phẩm và hỗ trợ các chiến dịch Marketing.</p>
+                        </div>
+
+                        <!-- VÙNG CHỨA THANH TRƯỢT VÀ NÚT BẤM (Đã canh giữa 2 bên) -->
+                        <div class="relative group/slider">
+                            
+                            <!-- Nút điều hướng Trái (Prev) -->
+                            <button onclick="slidePrev()" class="absolute left-0 md:-left-4 top-[260px] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-xl border border-apple-border flex items-center justify-center hover:bg-purple-600 hover:text-white transition-all text-apple-main cursor-pointer opacity-90 hover:opacity-100" aria-label="Previous">
+                                <svg class="w-6 h-6 pr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                            </button>
+
+                            <!-- Nút điều hướng Phải (Next) -->
+                            <button onclick="slideNext()" class="absolute right-0 md:-right-4 top-[260px] -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-xl border border-apple-border flex items-center justify-center hover:bg-purple-600 hover:text-white transition-all text-apple-main cursor-pointer opacity-90 hover:opacity-100" aria-label="Next">
+                                <svg class="w-6 h-6 pl-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+
+                            <!-- Khung chứa Video dọc TikTok -->
+                            <div id="videoSlider" class="video-scroll-container flex gap-5 overflow-x-hidden pb-2 w-full no-scrollbar px-2 -mx-2">
+                                
+                                <!-- Video Item 1 -->
+                                <div class="video-item flex-none w-[85%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col cursor-pointer transition-transform duration-500 ease-in-out origin-center" onclick="slideToIndex(0)">
+                                    <div class="h-[520px] rounded-2xl overflow-hidden bg-black border border-apple-border shadow-md flex flex-col pointer-events-none relative">
+                                        <video src="Video1.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-3 px-1 pointer-events-none">
+                                        <span class="font-semibold text-apple-main text-sm md:text-base">Signature Content</span>
+                                        <span class="text-apple-main/70 flex items-center gap-1.5 text-xs md:text-sm font-medium">
+                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            12.8K
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Video Item 2 -->
+                                <div class="video-item flex-none w-[85%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col cursor-pointer transition-transform duration-500 ease-in-out origin-center" onclick="slideToIndex(1)">
+                                    <div class="h-[520px] rounded-2xl overflow-hidden bg-black border border-apple-border shadow-md flex flex-col pointer-events-none relative">
+                                        <video src="video2.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-3 px-1 pointer-events-none">
+                                        <span class="font-semibold text-apple-main text-sm md:text-base">Content theo trend</span>
+                                        <span class="text-apple-main/70 flex items-center gap-1.5 text-xs md:text-sm font-medium">
+                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            3.9K
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Video Item 3 -->
+                                <div class="video-item flex-none w-[85%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col cursor-pointer transition-transform duration-500 ease-in-out origin-center" onclick="slideToIndex(2)">
+                                    <div class="h-[520px] rounded-2xl overflow-hidden bg-black border border-apple-border shadow-md flex flex-col pointer-events-none relative">
+                                        <video src="Video3.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-3 px-1 pointer-events-none">
+                                        <span class="font-semibold text-apple-main text-sm md:text-base">Signature Content cho mùa</span>
+                                        <span class="text-apple-main/70 flex items-center gap-1.5 text-xs md:text-sm font-medium">
+                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            400
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Video Item 4 -->
+                                <div class="video-item flex-none w-[85%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col cursor-pointer transition-transform duration-500 ease-in-out origin-center" onclick="slideToIndex(3)">
+                                    <div class="h-[520px] rounded-2xl overflow-hidden bg-black border border-apple-border shadow-md flex flex-col pointer-events-none relative">
+                                        <video src="video4.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-3 px-1 pointer-events-none">
+                                        <span class="font-semibold text-apple-main text-sm md:text-base">Trend-based Content</span>
+                                        <span class="text-apple-main/70 flex items-center gap-1.5 text-xs md:text-sm font-medium">
+                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            1.2K
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Video Item 5 -->
+                                <div class="video-item flex-none w-[85%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col cursor-pointer transition-transform duration-500 ease-in-out origin-center" onclick="slideToIndex(4)">
+                                    <div class="h-[520px] rounded-2xl overflow-hidden bg-black border border-apple-border shadow-md flex flex-col pointer-events-none relative">
+                                        <video src="video5.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline></video>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-3 px-1 pointer-events-none">
+                                        <span class="font-semibold text-apple-main text-sm md:text-base">Trend-based Content</span>
+                                        <span class="text-apple-main/70 flex items-center gap-1.5 text-xs md:text-sm font-medium">
+                                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                            1.2K
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+        <!-- SECTION 5: CONTACT -->
+        <section id="contact" class="py-24 px-6 bg-apple-bg border-t border-apple-border">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-apple-main mb-6">Sẵn sàng cho thử thách tiếp theo</h2>
+                <p class="text-apple-sub mb-10 text-lg">Rất mong có cơ hội được trao đổi trực tiếp và đồng hành với Quý Công Ty.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <!-- Zalo -->
+                    <a href="https://zalo.me/0843121345" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-4 p-6 rounded-2xl bg-apple-card border border-apple-border hover:border-apple-blue hover:text-apple-blue transition-all group shadow-sm hover:shadow-md cursor-pointer">
+                        <img src="zalo.webp" alt="Zalo" class="w-9 h-9 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform">
+                        <span class="text-xl md:text-2xl font-extrabold text-apple-main group-hover:text-apple-blue tracking-wide transition-colors">0843 121 345</span>
+                    </a>
+                    
+                    <!-- Gmail -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=trandactrinhan0728@gmail.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-4 p-6 rounded-2xl bg-apple-card border border-apple-border hover:border-apple-blue hover:text-apple-blue transition-all group shadow-sm hover:shadow-md cursor-pointer">
+                        <img src="gmail.webp" alt="Gmail" class="w-9 h-9 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform">
+                        <span class="text-sm md:text-base lg:text-lg font-bold text-apple-main group-hover:text-apple-blue transition-colors break-all">trandactrinhan0728@gmail.com</span>
+                    </a>
+                </div>
+
+                <div class="flex flex-col items-center justify-center pt-8 border-t border-apple-border">
+                    <p class="text-sm text-apple-sub mb-4">Chứng chỉ chuyên môn:</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="text-base font-bold bg-[#E8E8ED]/50 text-apple-main px-4 py-2 rounded-lg">English</span>
+                        <span class="text-base font-bold bg-[#E8E8ED]/50 text-apple-main px-4 py-2 rounded-lg">Tin học Văn phòng</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 bg-apple-card text-center text-sm text-apple-sub border-t border-apple-border">
+            <p>TP. Hồ Chí Minh</p>
+            <p class="mt-2">© 2026 Trần Đắc Trí Nhân. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+    <!-- Kịch bản Javascript trượt Video Tự Động (Mỗi 3s vòng lặp liên tục) -->
+    <script>
+        window.addEventListener('load', function() {
+            const slider = document.getElementById('videoSlider');
+            if (!slider) return; 
+            
+            const items = slider.querySelectorAll('.video-item');
+            if (items.length === 0) return;
+
+            let currentIndex = 0;
+            let autoSlideInterval;
+
+            function slideToIndex(index) {
+                const itemWidth = items[0].offsetWidth + 20; // 20px là khoảng cách gap-5
+                
+                // Thuật toán: Tính số video đang hiển thị trên màn hình (để không bị cuộn lố dư thừa)
+                const visibleItems = Math.floor(slider.clientWidth / itemWidth) || 1;
+                const maxIndex = items.length - visibleItems; // Giới hạn cuộn tối đa
+
+                // Ràng buộc vòng lặp: Nếu vượt quá maxIndex thì quay về 0 ngay lập tức
+                if (index > maxIndex) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = maxIndex;
+                } else {
+                    currentIndex = index;
+                }
+
+                slider.scrollTo({
+                    left: currentIndex * itemWidth,
+                    behavior: 'smooth'
+                });
+            }
+
+            function slideNext() {
+                slideToIndex(currentIndex + 1);
+            }
+
+            function slidePrev() {
+                slideToIndex(currentIndex - 1);
+            }
+
+            // --- HỆ THỐNG TỰ ĐỘNG TRƯỢT 3 GIÂY ---
+            function startAutoSlide() {
+                clearInterval(autoSlideInterval); 
+                autoSlideInterval = setInterval(slideNext, 3000); // Đã đổi thành 3000ms (3 giây)
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Khởi động auto-slide ngay khi web tải xong
+            startAutoSlide();
+
+            // Tạm dừng khi người xem đưa chuột (máy tính) hoặc chạm tay (điện thoại) vào video
+            slider.addEventListener('mouseenter', stopAutoSlide);
+            slider.addEventListener('mouseleave', startAutoSlide);
+            slider.addEventListener('touchstart', stopAutoSlide);
+            slider.addEventListener('touchend', startAutoSlide);
+
+            // Gán tính năng cho 2 nút bấm trên web
+            window.slideNext = slideNext;
+            window.slidePrev = slidePrev;
+        });
+    </script>
+</body>
+</html>
